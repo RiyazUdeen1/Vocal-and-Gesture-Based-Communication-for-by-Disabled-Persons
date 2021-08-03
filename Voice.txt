@@ -1,0 +1,114 @@
+import speech_recognition as sr
+from subprocess import call
+import time
+import cv2
+import os
+
+if _name=="main_":
+   
+    '''img=cv2.imread("/home/pi/Desktop/gesture/call_me.jpg")
+    cv2.imshow("frame",img)
+    cv2.waitKey(0)'''
+   
+    text=""
+    r = sr.Recognizer()
+    print("say {English or Indian } followed by the guesture Name")
+    #call(["espeak","-ven-us+f4","ay {English or Indian } followed by the guesture Name"])
+    i=0
+    while True:
+        try:
+            with sr.Microphone() as source:
+                print("Hi if you have something to Convey or test you can proceed :")
+                audio = r.listen(source)
+                try:
+                    text = r.recognize_google(audio)
+                    print(text)
+                    break
+                   
+                except:
+                    print("Sorry could not recognize what you said")
+                    i+=1
+                    if i>=5:
+                        break
+                    #call(["espeak","-ven-us+f4","Did you say something ! ,sorry i could not recognize"])
+        except KeyboardInterrupt:
+            print("Bye iam going out. ")
+            break
+
+    # When everything done, release the capture
+    #cap.release()
+#----------------------------------------------------------------------------------------------------------------
+   
+    sl=text.split(' ')
+    print(sl)
+    for gesture in sl:
+        if gesture.lower() == "call":
+            print('in call')
+            img=cv2.imread("/home/pi/Desktop/gesture/call_me.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+            #time.sleep(2)
+           
+        elif gesture.lower() == "luck":
+            img=cv2.imread("/home/pi/Desktop/gesture/finger_cross.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+            #time.sleep(2)
+           
+        elif gesture.lower() == "super" or gesture.lower() == "ok" :
+            img=cv2.imread("/home/pi/Desktop/gesture/okay.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+            #time.sleep(2)
+           
+        elif gesture.lower() == "paper" or gesture.lower() == "5" or gesture.lower() == "five":
+            img=cv2.imread("/home/pi/Desktop/gesture/paper.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+            #time.sleep(2)
+           
+        elif gesture.lower() == "peace":
+            img=cv2.imread("/home/pi/Desktop/gesture/peace.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+            #time.sleep(2)
+           
+        elif gesture.lower() == "zero" or gesture.lower() == "0" or gesture.lower() == "rock" or gesture.lower() == "first":
+            img=cv2.imread("/home/pi/Desktop/gesture/rock.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+            #time.sleep(2)
+           
+        elif gesture.lower() == "swag":
+            img=cv2.imread("/home/pi/Desktop/gesture/rock_on.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+            #time.sleep(2)
+           
+        elif gesture.lower() == "scissor" :
+            img=cv2.imread("/home/pi/Desktop/gesture/scissors.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+            #time.sleep(2)
+           
+        elif gesture.lower() == "best" or gesture.lower() == "mountain" or gesture.lower() == "Mountain":
+            img=cv2.imread("/home/pi/Desktop/gesture/thumbs.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+            #time.sleep(2)
+           
+        elif gesture.lower() == "loser" or gesture.lower() == "up":
+            img=cv2.imread("/home/pi/Desktop/gesture/up.jpg")
+            cv2.imshow("frame",img)
+            cv2.waitKey(0)
+       
+        #cv2.waitKey(0)
+        cv2.destroyAllWindows()
+       
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    #time.sleep(2)
+#-------------------------------------------------------------------------------------------------------------------------
+   
+   
+    cv2.destroyAllWindows()
