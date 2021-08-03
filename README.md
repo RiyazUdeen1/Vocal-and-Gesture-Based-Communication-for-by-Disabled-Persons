@@ -1,0 +1,2 @@
+# Vocal-and-Gesture-Based-Communication-for-by-Disabled-Persons
+There is a huge communication gap between a normal and a differently-abled person, our project mainly aims to bridge the communication gap between them. It is really difficult for us to understand what they are trying to say exactly and vice versa in case of deaf and dumb. To avoid this complexity in understanding each other we develop a Vocal and Gesture based Companion for disabled persons. 
